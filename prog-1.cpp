@@ -48,7 +48,7 @@ public:
     
     void resize(size_t n)
     {
-        if(n > capacity);
+        if(n > capacity)
         {
             T * new_data = new T[n];
             for(size_t i = 0; i < num_entries; i++)
@@ -60,7 +60,8 @@ public:
 
     void append(const T& item)
     {
-        resize(num_entries + 1);
+        if(num_entries >= capacity)
+            resize(num_entries * 2 + 1);
         data[num_entries] = item;
         num_entries++;
     }
