@@ -13,6 +13,7 @@ struct node
         :prev(p), next(n), data(s)
     {
     }
+    
 };
 
 struct list
@@ -28,8 +29,13 @@ struct list
 
     ~list()
     {
-        for(node * n = head; n; n = n->next)
-            delete n;
+        if(head && head->next){
+            for(node * n = head->next; n; n = n->next)
+                delete n->prev;
+            // delete tail;
+        }
+        else if(head)
+            delete head;
     }
 
     size_t size() const
@@ -53,16 +59,34 @@ struct list
     node * add_after(node* n, const std::string& str)
     {
         node * a = new node(n, n->next, str);
-        n->next->prev = a;
+        if(n->next)
+            n->next->prev = a;
         n->next = a;
         return a;
     }
 
     void remove(node* n)
     {
-        n->prev->next = n->next;
-        n->next->prev = n->prev;
-        delete n;
+        if(n){
+            if(n == tail && n == head){
+                head = nullptr;
+                tail = nullptr;
+            }
+            else if(n == head){
+                n->next->prev = nullptr;
+                head = n->next;
+            }
+            else if(n == tail){
+                n->prev->next = nullptr;;
+                tail = n->prev;
+            }
+            else{
+                n->prev->next = n->next;
+                n->next->prev = n->prev;
+            }
+            
+            delete n;
+        }
     }
 
     void print()

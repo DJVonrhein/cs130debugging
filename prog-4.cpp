@@ -5,13 +5,13 @@
 
 void print_cases(const std::string& name)
 {
-    char up[8];
-    char lo[8];
+    std::string up = name;
+    std::string lo = name;
 
     for(size_t i = 0; i < name.size(); i++)
     {
-        up[i] = std::toupper(name[i]);
-        lo[i] = std::tolower(name[i]);
+        up.at(i) = std::toupper(name[i]);
+        lo.at(i) = std::tolower(name[i]);
     }
 
     std::cout << lo << " " << up << std::endl;

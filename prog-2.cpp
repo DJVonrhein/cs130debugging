@@ -37,7 +37,9 @@ public:
     vec location;
 };
 
-void set_names(object* objects, size_t number_objects, const std::string& base_name)
+
+template<typename T>
+void set_names(T* objects, size_t number_objects, const std::string& base_name)
 {
     for(size_t i = 0; i < number_objects; i++)
     {
