@@ -7,12 +7,12 @@ int main()
 {
     std::vector<double> v(100);
 
-    for(size_t i = v.size()-1; i>=0; i--)
-        v[i] = cos(i);
+    for(size_t i = 0; i< v.size(); ++i)
+        v.at(i) = cos(i);
 
     std::sort(v.begin(), v.end());
 
-    std::cout << v[0] << std::endl;
+    std::cout << v.at(0) << std::endl;
     
     return 0;
 }
