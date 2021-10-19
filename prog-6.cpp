@@ -27,16 +27,16 @@ struct array
     
     const array& operator + (const array& c) const
     {
-        array r(n);
-        for(size_t i = 0; i < n; i++)
+        array r(c.n);
+        for(size_t i = 0; i < c.n; i++)
             r[i] = data[i] + c[i];
         return r;
     }
 
     const array& operator - (const array& c) const
     {
-        array r(n);
-        for(size_t i = 0; i < n; i++)
+        array r(c.n);
+        for(size_t i = 0; i < c.n; i++)
             r[i] = data[i] - c[i];
         return r;
     }

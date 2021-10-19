@@ -32,7 +32,7 @@ struct list
         if(head && head->next){
             for(node * n = head->next; n; n = n->next)
                 delete n->prev;
-            // delete tail;
+            delete tail;
         }
         else if(head)
             delete head;
